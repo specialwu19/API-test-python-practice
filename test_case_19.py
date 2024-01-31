@@ -1,0 +1,15 @@
+import requests
+from share_variable import get_variable
+
+def test_delete_specific_movie_invalid_fail():
+
+    url = "http://localhost:3000/api/movies/:id"
+    replace_value=get_variable("user_movie_2")
+    new_url=url.replace(":id",replace_value)
+
+    payload = ""
+    headers = {}
+
+    response = requests.delete(new_url, headers=headers, data=payload)
+
+    assert response.status_code==401
